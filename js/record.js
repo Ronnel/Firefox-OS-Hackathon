@@ -63,6 +63,7 @@ window.scale = function scale(el, val) {
 }
 
 function startRecord(){
+    $("#record-wrapper").fadeIn();
     timer = window.setInterval(function() {
         currentTime += 1;
         document.getElementById("current-time").innerHTML = currentTime;
@@ -92,7 +93,9 @@ function endRecord(){
             document.body.appendChild(audio);
             var audioURL = window.URL.createObjectURL(e.data);
             audio.src = audioURL;
-            audio.play();
+            //audio.play();
+
+            window.location = "sendlist.html";
         }
     }
 }

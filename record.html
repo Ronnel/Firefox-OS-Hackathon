@@ -26,76 +26,12 @@
           font-family: 'Open Sans', sans-serif;
         }
 
-        #wrapper{
-            height: 100%;
-            width: 100%;
-            background: #3F404E;
-            z-index: 1000;
-            color: #fff;
-            font-weight: 100;
-        }
 
-        #speek-button{
-            height: 80px;
-            width: 80px;
-            border-radius: 50%;
-            background: url(img/icons/mic.png) center no-repeat, #e74c3c;
-            background-size: 50%;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            margin-left: -40px;
-            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        #timer, #timer-inner{
-            width: 300px;
-            height: 300px;
-            text-align: center;
-            font-size: 64px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.3);
-            line-height: 300px;
-            margin-top: -200px;
-            margin-left: -150px;
-            z-index: 100;
-        }
-        #timer-inner{
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(0);
-            -webkit-transform: scale(0);
-            -moz-transform: scale(0);
-            margin-top: -150px;
-
-            transition: all 1s linear;
-            -moz-transition: all 1s linear;
-            -webkit-transition: all 1s linear;
-        }
-        #visualiser{
-            width: 100%;
-            height: 300px;
-            background: none;
-            top: 50%;
-            position: absolute;
-            margin-top: -200px;
-        }
 
         </style>
     </head>
     <body>
 
-        <div id="wrapper">
-            <div id="timer">
-                <div id="timer-inner"></div>
-                <span id="current-time">0</span>
-            </div>
 
-            <canvas id="visualiser"></canvas>
-
-            <div id="speek-button"></div>
-        </div>
     </body>
 </html>

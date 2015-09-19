@@ -2,12 +2,15 @@
 <head>
   <title>Search Bar for Names to send message to</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.3">
   <script src='js/namelist.js'></script>
 
   <style>
 
     body,html{
       margin: 0px;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     *{
@@ -15,13 +18,13 @@
       background-color: #fff;
     }
 
-    #cancelButton{
+    #header{
       position: fixed;
       top: 0px;
       border-bottom: 1px solid #ccc;
       padding-left: 10px;
-      height: 60px;
       width: 100%;
+      height: 60px;
       color: #6c7a89;
       font-size: 17px;
       line-height: 80px;
@@ -31,29 +34,37 @@
 
     #wrapper{
       margin-top: 61px;
+      width: 100%;
+      height: 100%;
       position: relative;
+      overflow: hidden;
     }
 
     #scrollableMenu{
       z-index: 800;
       position: relative;
-      overflow: scroll;
+      overflow-y: scroll;
+      overflow-x: hidden;
     }
 
     .person{
       position: relative;
       border-bottom: 1px solid #ddd;
-      background-color: #f6f6f6;
+      background: #fff;
       height: 50px;
       padding-left: 10px;
       color: #34495e;
+      overflow: hidden;
     }
 
     .name{
       font-size: 15px;
-      margin-left: 60px;
+      margin-left: 20px;
       line-height: 50px;
-      background-color: inherit;
+      position: relative;
+      overflow: hidden;
+      display: block;
+      float: left;
     }
 
     .profile{
@@ -82,11 +93,10 @@
 </head>
 
 <body>
-  <div id=cancelButton>
-    Cancel
-  </div>
-  <div id="wrapper">
-    <div id="scrollableMenu">
+    <div id="header">
+        <a href="frontPage.html" style="float: left; text-decoration: none; height: 60px; margin: 0px; padding: 0px; line-height: 60px; color: #444; background: none !important;"><div id="cancel" style="background: none !important;">Cancel</div></a>
     </div>
-  </div>
+    <div id="wrapper">
+        <div id="scrollableMenu"></div>
+    </div>
 </body>

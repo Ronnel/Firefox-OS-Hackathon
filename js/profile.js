@@ -13,7 +13,7 @@ $(document).ready(function(){
   $("#prfpic").css("-webkit-background-size", "cover");
   $("#prfpic").css("-moz-background-size", "cover");
 
-  $('#prfpic').on('click', function() {
+  $('#prfpic').click(function() {
     $('#profile-image-upload').click();
 });
 

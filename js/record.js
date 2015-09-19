@@ -15,12 +15,14 @@ window.onload = function(){
 
     photo.addEventListener(downEvt, function() {
         spring.setEndValue(-1);
+        startRecord();
     });
 
     document.body.addEventListener(upEvt, function() {
         spring.setEndValue(0);
+        endRecord();
     });
-    
+
 }
 
 window.scale = function scale(el, val) {
@@ -28,4 +30,18 @@ window.scale = function scale(el, val) {
   el.style.msTransform =
   el.style.webkitTransform =
   el.style.transform = 'scale3d(' + val + ', ' + val + ', 1)';
+}
+
+window.timer = {};
+window.currentTime = 0;
+function startRecord(){
+    timer = window.setInterval(function() {
+        currentTime += 1;
+        document.getElementById("current-time").innerHTML = currentTime;
+    }, 1000);
+}
+
+function endRecord(){
+    window.clearInterval(timer);
+    currentTime = 0;
 }

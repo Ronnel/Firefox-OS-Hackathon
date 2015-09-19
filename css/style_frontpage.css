@@ -9,26 +9,28 @@ body{
 
 header{
    width: 100%;
-   height: 60px;
+   height: 50px;
    position: fixed;
    z-index: 1000;
    background: #e8e8e8;
 }
 
 #bsearch{
-    width: 50px;
+    width: 30px;
     right :5px;
-    margin-top: 5px;   
-    height: 50px;
+    margin-top: 10px; 
+    margin-right: 5px;
+    height: 30px;
     position: absolute;
-    z-index: 1001;    
+    z-index: 1001; 
 }
 
 #bprofile{
-    width: 50px;
+    width: 30px;
     left: 5px;
-    height: 50px;
-    margin-top: 5px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
     position: absolute;
     z-index: 1001;
 }
@@ -43,7 +45,7 @@ header{
     position: absolute;
     font-size: 20px;
     text-align: center;
-    line-height: 60px;
+    line-height: 50px;
     font-weight: 300;
 }
 
@@ -55,7 +57,7 @@ header{
 #scroller{
     width: 310px;
     z-index: 800;
-    padding-top: 63px;
+    padding-top: 33px;
     height: auto;
     overflow: hidden;
     position: relative;

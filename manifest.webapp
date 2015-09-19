@@ -1,7 +1,7 @@
 {
-  "version": "0.2.0",
-  "name": "test",
-  "description": "Demonstrates how to use permissions to load remote content",
+  "version": "0.1.0",
+  "name": "Speek",
+  "description": "A simple voice messaging app",
   "launch_path": "/index.html",
   "icons": {
     "16": "/img/icons/icon16x16.png",

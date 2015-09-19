@@ -1,3 +1,15 @@
+html, body{
+		height: auto;
+		width: 100%;
+		color: #fff;
+		background: #f6f6f6;
+		padding: 0px;
+		margin: 0px;
+}
+*{
+font-family: 'Open Sans';
+}
+
 #wrapper{
 	height: auto;
 	overflow: auto;
@@ -15,15 +27,14 @@
 
 #prfpic{
 	width: 200px;
-	position: relative;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	position: absolute;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	left: 50%;
 	margin-left: -100px;
 }
 
-img.prf
-{
+img.prf{
 	position: absolute;
 	height: 120px;
 	width: 120px;
@@ -33,58 +44,68 @@ img.prf
 }
 
 #prfname{
-	width: 200px;
-	position: relative;
-	padding-top: 10px;
+	width: 160px;
+	position: absolute;
+	padding: 10px;
 	left: 50%;
 	font-size: 30px;
-	margin-left: -100px;
-	color: white;
-	padding-top: 180px;
-  margin-top: 10px;
-  padding-bottom: 5px;
+	margin-left: -90px;
+  top: 200px;
 	text-align: center;
 }
 
 #status{
-	width: 200px;
+	width: 130px;
 	left:50%;
-	margin-left: -100px;
-	position: relative;
+	top: 250px;
+	margin-left: -75px;
+	position: absolute;
 	text-align: center;
 	font-size: 15px;
-  height: 40px;
-	padding-top: 2px;
-  padding-bottom: 5px;
+	padding: 5px 10px;
 }
 
 #details{
-	width: 200px;
-	position: relative;
-	padding-top: 10px;
-	left: 50%;
-	margin-left: -100px;
+	width: 100%;
+	position: absolute;
+	left: 0px;
+	top: 320px;
 	color: white;
+	padding-bottom: 40px;
 	}
 
 li{
-			list-style-type: none;
+		list-style-type: none;
+		margin: 0px;
+		padding: 0px;
 	}
 
 ul{
+	padding: 0px;
+	margin: 0px;
 	padding-bottom: 60px;
 }
 .input{
 			position: relative;
-			color: white;
-			padding: 10px 0px;
+			color: #444;
+			padding: 10px 40px;
+			width: calc(100% - 80px);
+			left: 0px;
+			height: 25px;
+			margin: 0px;
+			margin-bottom: 2px;
 			font-size: 15px;
 			border: none;
-			border-bottom: 0px solid white;
+			background: rgba(0, 0, 0, 0.2);
 	    border-radius: 0;
-			outline: none;
+			outline: none !important;
+			display: block;
+		}
+
+		.input.underlined{
 			background: none;
-	    width: 200px;
+			border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+			color: #666;
 		}
 
 	.footer{

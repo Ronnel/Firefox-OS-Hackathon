@@ -1,7 +1,7 @@
 # Firefox OS Hackathon
 Code for firefox os hackathon, 2015
 
-IDEAS:
+Ideas:
 ------
 
 1. numlist1 

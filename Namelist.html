@@ -3,16 +3,23 @@
   <title>Search Bar for Names</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
   <style>
+
+    body,html{
+      margin: 0px;
+    }
+
     *{
       font-family: 'Open Sans', sans-serif;
       background-color: #fff;
     }
+
     #searchBar{
       border-bottom: 1px solid #6c7a89;
       padding-left: 10px;
-      height: 25px;
+      height: 60px;
       color: #6c7a89;
-      font-size: 15px;
+      font-size: 17px;
+      line-height: 80px;
       background-color: #eee;
     }
 
@@ -20,22 +27,61 @@
       margin-top: 0px;
     }
 
-    .name{
+    .person{
       border-bottom: 1px solid #95a5a6;
-      background-color: #e4f1fe;
-      padding-left: 3px;
+      background-color: #dadfe1;
+      height: 50px;
+      padding-left: 30px;
+      line-height: 50px;
       color: #34495e;
-      font-size: 20px;
-
     }
+
+    .name{
+      font-size: 20px;
+      margin-left: 50px;
+      background-color: inherit;
+    }
+
+    #searchBar img{
+      height: 12px;
+      width: 12px;
+      margin-right: 5px;
+    }
+
+    img.profile{
+      float: left;
+      background-color: inherit;
+      height: 40px;
+      width: 40px;
+      padding-top: 5px;
+    }
+
   </style>
 </head>
 
 <body>
-  <div id="searchBar">Search for name</div>
+  <div id="searchBar">
+    <img src="img/icons/Search Icon.png">
+      Search for name
+  </div>
   <div id="scrollableMenu">
-    <div class="name">Name 1</div>
-    <div class="name">Name 2</div>
-    <div class="name">Name 3</div>
+    <div class="person">
+      <img src="img/icons/Default Profile.png" class="profile">
+      <div class="name">
+      Name 1
+      </div>
+    </div>
+    <div class="person">
+      <img src="img/icons/Default Profile.png" class="profile">
+      <div class="name">
+        Name 2
+      </div>
+    </div>
+    <div class="person">
+      <img src="img/icons/Default Profile.png" class="profile">
+      <div class="name">
+        Name 3
+      </div>
+    </div>
   </div>
 </body>

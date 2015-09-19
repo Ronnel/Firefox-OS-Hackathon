@@ -12,7 +12,7 @@ Team members:
 -------------
 
 1. Vrushabh Rajesh
-2. Ashiq Muhammad
+2. Ashiq Muhammed 
 3. Ronnel Davis
 4. John V. George
 

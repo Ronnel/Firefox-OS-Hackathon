@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-  <title>Search Bar for Names to Add</title>
+  <title>Search Bar for Names to send message to</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
   <script src='js/namelist.js'></script>
 
@@ -15,7 +15,7 @@
       background-color: #fff;
     }
 
-    #searchBar{
+    #cancelButton{
       position: fixed;
       top: 0px;
       border-bottom: 1px solid #ccc;
@@ -56,18 +56,6 @@
       background-color: inherit;
     }
 
-    #searchIcon{
-      float: left;
-      margin-top: 35px;
-      background: url(img/icons/Search_Icon.png);
-      background-size: cover;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      height: 12px;
-      width: 12px;
-      margin-right: 5px;
-    }
-
     .profile{
       float: left;
       border-radius: 50%;
@@ -90,39 +78,12 @@
       opacity: 0.5;
     }
 
-    #searchInput{
-      border: none;
-      border-radius: 0px;
-      border-bottom: 1px solid #bbb;
-      width: 65%;
-      background: none;
-      color: inherit;
-      font-size: inherit;
-      font-family: inherit;
-      margin-left: 10px;
-    }
-
-    #closeButton{
-      position: absolute;
-      top: 35px;
-      right: 22px;
-      background: url(img/icons/Close_Button.png);
-      background-size: cover;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      height: 15px;
-      width: 15px;
-      opacity: 0.5;
-    }
-
   </style>
 </head>
 
 <body>
-  <div id="searchBar">
-    <div id="searchIcon"></div>
-    <input id="searchInput" type="name" placeholder="Search for name"/>
-    <div id="closeButton"></div>
+  <div id=cancelButton>
+    Cancel
   </div>
   <div id="wrapper">
     <div id="scrollableMenu">

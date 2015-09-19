@@ -8,7 +8,7 @@ $(document).ready(function(){
 
   $("#submit").click(submit);
 
-  $("#prfpic").css("background", "url(img/icons/Max.jpg) center");
+  $("#prfpic").css("background", "url(img/icons/Default_Profile_2.jpg) center");
   $("#prfpic").css("background-size", "cover");
   $("#prfpic").css("-webkit-background-size", "cover");
   $("#prfpic").css("-moz-background-size", "cover");

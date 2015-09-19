@@ -47,15 +47,32 @@ header{
 #wrapper{
   width: 100%;
   background : #fff;
+  z-index:800;
 }
 #scroller{
     width: 310px;
+    z-index: 800;
     padding-top: 53px;
     height: auto;
     overflow: hidden;
     position: relative;
     display: block;
     margin: 0px auto;
+    
+}
+
+#brecord{
+            height: 60px;
+            width: 60px;
+            border-radius: 50%;
+            background:#e74c3c;
+            position: fixed;
+            z-index: 1000;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -30px;
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+            
     
 }
 

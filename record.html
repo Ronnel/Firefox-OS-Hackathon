@@ -1,12 +1,16 @@
 <!DOCTYPE html>
     <head>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+        <script src="js/jquery.js"></script>
+        <script src="js/springTo.js"></script>
         <style>
-        
+
         html, body {
           margin: 0;
           padding: 0;
           width: 100%;
           height: 100%;
+          font-family: 'Open Sans', sans-serif;
         }
 
         #wrapper{
@@ -22,17 +26,34 @@
             border-radius: 30px;
             background: red;
             position: absolute;
-            bottom: 20px;
+            bottom: -20px;
             left: 50%;
             margin-left: -30px;
             box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
         }
+
+        #timer{
+            width: 100%;
+            text-align: center;
+            font-size: 64px;
+            position: absolute;
+            top: 50%;
+            height: 64px;
+            line-height: 64px;
+            margin-top: -32px;
+        }
+
         </style>
+        <script>
+            window.onload = function(){
+                elementSpringTo('#speek-button', window.innerWidth/2 - 30, window.innerHeight - 120, [120, 10, 3], 0 , 0, 0);
+            }
+        </script>
     </head>
     <body>
 
         <div id="wrapper">
-            <div class="timer">
+            <div id="timer">
                 <div id="current-time"></div>/15
             </div>
 

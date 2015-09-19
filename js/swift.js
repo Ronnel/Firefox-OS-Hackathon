@@ -19,12 +19,12 @@ function View(constructor){
 
 		this.div = document.createElement("div");
 		this.oncreate = obj.oncreate || function(){};
-		
+
 		return this;
 };
 
 
-function ViewController(obj){ 
+function ViewController(obj){
 		this.self = this;
   		this.viewDidLoad = function(){};
 		return this;
@@ -44,19 +44,43 @@ View.prototype.inheritFrom = function(parentClass){
 View.prototype.addSubview = function(newView){
 
 		newView.div.innerHTML = newView.text || "";
-		
+
 		for(style in newView.styles){
 				newView.div.style[style] = newView.styles[style];
 		}
-		
+
 		newView.div.style.width = (newView.frame.width||0)+"px";
 		newView.div.style.height = (newView.frame.height||0)+"px";
 		newView.div.style.top = (newView.frame.top||0)+"px";
 		newView.div.style.left = (newView.frame.left||0)+"px";
 		newView.div.style.position = "absolute";
-		
+
 		this.views.push(newView);
 		this.div.appendChild(newView.div);
-		
+
 		newView.oncreate();
 };
+
+
+
+window.mapValueFromRangeToRange = function(value, fromLow, fromHigh, toLow, toHigh) {
+    fromRangeSize = fromHigh - fromLow;
+    toRangeSize = toHigh - toLow;
+    valueScale = (value - fromLow) / fromRangeSize;
+    return toLow + (valueScale * toRangeSize);
+}
+window.createSpring = function createSpring(springSystem, friction, tension, rawValues) {
+  var spring = springSystem.createSpring();
+  var springConfig;
+  if (rawValues) {
+    springConfig = new rebound.SpringConfig(friction, tension);
+  } else {
+    springConfig = rebound.SpringConfig.fromOrigamiTensionAndFriction(friction, tension);
+  }
+  spring.setSpringConfig(springConfig);
+  spring.setCurrentValue(0);
+  return spring;
+}
+
+window.downEvt = window.ontouchstart !== undefined ? 'touchstart' : 'mousedown';
+window.upEvt = window.ontouchend !== undefined ? 'touchend' : 'mouseup';

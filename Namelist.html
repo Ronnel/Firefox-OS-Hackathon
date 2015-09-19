@@ -1,12 +1,41 @@
 <!doctype html>
 <head>
+  <title>Search Bar for Names</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <style>
+    *{
+      font-family: 'Open Sans', sans-serif;
+      background-color: #fff;
+    }
+    #searchBar{
+      border-bottom: 1px solid #6c7a89;
+      padding-left: 10px;
+      height: 25px;
+      color: #6c7a89;
+      font-size: 15px;
+      background-color: #eee;
+    }
+
+    #scrollableMenu{
+      margin-top: 0px;
+    }
+
+    .name{
+      border-bottom: 1px solid #95a5a6;
+      background-color: #e4f1fe;
+      padding-left: 3px;
+      color: #34495e;
+      font-size: 20px;
+
+    }
+  </style>
 </head>
 
 <body>
-  <div>Search for name</div>
-  <div>
-    <div>Name 1</div>
-    <div>Name 2</div>
-    <div>Name 3</div>
+  <div id="searchBar">Search for name</div>
+  <div id="scrollableMenu">
+    <div class="name">Name 1</div>
+    <div class="name">Name 2</div>
+    <div class="name">Name 3</div>
   </div>
 </body>

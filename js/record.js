@@ -59,10 +59,10 @@ function startRecord(){
         currentTime += 1;
         document.getElementById("current-time").innerHTML = currentTime;
     }, 1000);
-
-    mediaRecorder.start();
-    console.log(mediaRecorder.state);
-    console.log("recorder started");
+    if(mediaRecorder){
+        mediaRecorder.start();
+        console.log("recorder started");
+    }
 }
 
 function endRecord(){
@@ -70,7 +70,6 @@ function endRecord(){
     currentTime = 0;
     if(mediaRecorder){
         mediaRecorder.stop();
-        console.log(mediaRecorder.state);
         console.log("recorder stopped");
 
         mediaRecorder.ondataavailable = function(e) {

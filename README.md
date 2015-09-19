@@ -2,10 +2,7 @@
 Code for firefox os hackathon, 2015
 
 IDEAS:
-======
-
-Subhead
--------
+------
 
 1. numlist1 
 2. numlist2
@@ -13,7 +10,3 @@ Subhead
 4. numlist4
 
 
-- list1
-- list2
-- list3
-- list4

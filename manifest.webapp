@@ -16,7 +16,10 @@
   "type": "privileged",
   "permissions": {
     "systemXHR": {
-      "description": "Required to load remote content"
+        "description": "Required to load remote content"
+  },
+    "audio-capture": {
+        "description": "Required to record audio"
     }
   },
   "installs_allowed_from": [

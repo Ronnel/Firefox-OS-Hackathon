@@ -1,38 +1,56 @@
 body{
-background : #fff;
-color : #000;
-  overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background : #fff;
+    color : #fff;
+    overflow: hidden;
 }
 
 #wrapper{
   width: 100%;
-  height : 100%;
+  height : auto;
 }
 
 .contacts{
-  width : 150px;
-  height: 200px;
-  color: white;
-  margin: 10px;
-  position: absolute;
-  align-items: center;
-  background: #000;
-
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    width: 100px;
+    float: left;
+    height: 125px;
+    margin-right: 20px;
+    margin-left: 10px;
 }
 
 .profile_pic{
-  
-  width: 100px;
-  height: 150px;
-  align-self: center;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    border-radius: 100px;
+    border : 2px black solid;
+    left: 20px;
+    top: 15px;
+    align-items: center;
+    
+   align-self: center;
+    
  
 }
 
 .name{
-  color: white;
-  text-align: center;
-  font-family: 'Open Sans';
-	font-size: 24px;
-	font-style: normal;
-	font-variant: normal;
+    color: white;
+    font-family: 'Open Sans';  
+    color: #90a4ae;
+    white-space: nowrap;
+    display: block;
+    overflow: hidden;
+    left :10px;
+    top: 100px;  
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: 300;
 }

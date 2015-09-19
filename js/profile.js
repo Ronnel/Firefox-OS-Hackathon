@@ -50,4 +50,5 @@ document.getElementById('profile-image-upload').onchange = function(e) {
     $("#prfpic").css("background-size", "cover");
     $("#prfpic").css("-webkit-background-size", "cover");
     $("#prfpic").css("-moz-background-size", "cover");
+    return;
 }

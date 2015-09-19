@@ -25,11 +25,7 @@ font-family: 'Open Sans';
 
 }
 
-#prfpic{
-	background: url(img/icons/Max.jpg);
-	background-size: cover;
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
+#prfpic {
 	width: 100px;
 	height: 100px;
 	position: absolute;
@@ -92,8 +88,8 @@ ul{
 			margin-bottom: 2px;
 			font-size: 15px;
 			border: none;
-			background: rgba(0, 0, 0, 0.2);
-	    border-radius: 0;
+			background: rgba(0, 0, 0, 0.1);
+	    	border-radius: 0;
 			outline: none !important;
 			display: block;
 		}

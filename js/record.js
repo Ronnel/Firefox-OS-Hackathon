@@ -1,6 +1,5 @@
 window.mediaRecorder = false;
 var canvas = document.getElementById("visualiser");
-var audioStream;
 // visualiser setup - create web audio api context and canvas
 
 var audioCtx = new (window.AudioContext || webkitAudioContext)();
@@ -42,7 +41,7 @@ window.onload = function(){
         },
         // Success callback
         function(stream) {
-            audioStream = stream;
+            visualize(stream);
             mediaRecorder = new MediaRecorder(stream);
         },
 
@@ -70,7 +69,6 @@ function startRecord(){
     }, 1000);
     if(mediaRecorder){
         mediaRecorder.start();
-        visualize(audioStream);
         console.log("recorder started");
     }
 }

@@ -18,11 +18,12 @@
       background-color: #fff;
     }
 
-    #header{
+    #headerMenu{
       position: fixed;
       top: 0px;
       border-bottom: 1px solid #ccc;
-      padding-left: 10px;
+      height: 60px;
+
       width: 100%;
       height: 60px;
       color: #6c7a89;
@@ -89,14 +90,51 @@
       opacity: 0.5;
     }
 
+    #backButton{
+      position: absolute;
+      top: 25px;
+      left: 20px;
+      background: url(img/icons/back.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      height: 30px;
+      width: 30px;
+      opacity: 0.5;
+    }
+
+    #selectAll{
+      float: left;
+      top: 30px;
+
+    }
+
+    #select{
+      position: absolute;
+      top: 0px;
+      right: 40px;
+      margin-right: 0px;
+      background-color: inherit;
+      height: inherit;
+
+    }
+
   </style>
 </head>
 
 <body>
-    <div id="header">
-        <a href="frontPage.html" style="float: left; text-decoration: none; height: 60px; margin: 0px; padding: 0px; line-height: 60px; color: #444; background: none !important;"><div id="cancel" style="background: none !important;">Cancel</div></a>
+
+  <div id="headerMenu">
+    <a href="frontPage.html">
+      <div id="backButton"></div>
+    </a>
+    <div id="select">
+      Select All
     </div>
-    <div id="wrapper">
-        <div id="scrollableMenu"></div>
+    <div class="addButton" id="selectAll"></div>
+  </div>
+  <div id="wrapper">
+    <div id="scrollableMenu">
+
     </div>
 </body>

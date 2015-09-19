@@ -68,6 +68,7 @@ font-family: 'Open Sans';
 	top: 320px;
 	color: white;
 	padding-bottom: 40px;
+
 	}
 
 li{
@@ -93,9 +94,10 @@ ul{
 			font-size: 15px;
 			border: none;
 			background: rgba(0, 0, 0, 0.1);
-	    	border-radius: 0;
+	    border-radius: 0;
 			outline: none !important;
 			display: block;
+
 		}
 
 		.input.underlined{

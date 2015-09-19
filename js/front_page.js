@@ -8,3 +8,9 @@ var contact = function(id, name, dp){
   this.div=div;
   return this;
 }
+
+
+window.onload=function(){
+  
+  
+}

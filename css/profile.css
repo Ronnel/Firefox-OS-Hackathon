@@ -26,21 +26,17 @@ font-family: 'Open Sans';
 }
 
 #prfpic{
-	width: 200px;
+	background: url(img/icons/Max.jpg);
+	background-size: cover;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	width: 100px;
+	height: 100px;
 	position: absolute;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	top: 60px;
+	border-radius: 50%;
 	left: 50%;
-	margin-left: -100px;
-}
-
-img.prf{
-	position: absolute;
-	height: 120px;
-	width: 120px;
-	padding-top: 60px;
-	left: 50%;
-	margin-left: -60px;
+	margin-left: -50px;
 }
 
 #prfname{

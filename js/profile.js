@@ -19,7 +19,7 @@ function submit(){
       document.getElementById("status").value,
 		]
         if (!document.getElementById("name").value || !document.getElementById("email").value || !document.getElementById("phone").value || !document.getElementById("school").value || !document.getElementById("prfname").value || !document.getElementById("status").value) {
-            alert("Fill All Input Fields Ans Try Again");
+            alert("Fill All Input Fields And Try Again");
             return;
         }
         else {

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <head>
+        <style>
+        
+        html, body {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        #wrapper{
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.5);
+            z-index: 1000;
+        }
+
+        #speek-button{
+            height: 60px;
+            width: 60px;
+            border-radius: 30px;
+            background: red;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -30px;
+            box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
+        }
+        </style>
+    </head>
+    <body>
+
+        <div id="wrapper">
+            <div class="timer">
+                <div id="current-time"></div>/15
+            </div>
+
+            <div id="speek-button"></div>
+        </div>
+    </body>
+</html>

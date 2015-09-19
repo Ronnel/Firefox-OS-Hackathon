@@ -2,6 +2,8 @@
 <head>
   <title>Search Bar for Names</title>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+  <script src='js/namelist.js'></script>
+
   <style>
 
     body,html{
@@ -14,7 +16,7 @@
     }
 
     #searchBar{
-      border-bottom: 1px solid #6c7a89;
+      border-bottom: 1px solid #ccc;
       padding-left: 10px;
       height: 60px;
       color: #6c7a89;
@@ -28,32 +30,56 @@
     }
 
     .person{
-      border-bottom: 1px solid #95a5a6;
-      background-color: #dadfe1;
+      position: relative;
+      border-bottom: 1px solid #ddd;
+      background-color: #f6f6f6;
       height: 50px;
-      padding-left: 30px;
-      line-height: 50px;
+      padding-left: 10px;
       color: #34495e;
     }
 
     .name{
-      font-size: 20px;
-      margin-left: 50px;
+      font-size: 15px;
+      margin-left: 60px;
+      line-height: 50px;
       background-color: inherit;
     }
 
-    #searchBar img{
+    #searchIcon{
+      float: left;
+      margin-top: 35px;
+      background: url(img/icons/Search_Icon.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
       height: 12px;
       width: 12px;
       margin-right: 5px;
     }
 
-    img.profile{
+    .profile{
       float: left;
-      background-color: inherit;
-      height: 40px;
-      width: 40px;
-      padding-top: 5px;
+      background: url(img/icons/Default_Profile.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      margin-top: 10px;
+      margin-left: 10px;
+    }
+
+    .addButton{
+      top: 15px;
+      right: 10px;
+      position: absolute;
+      background: url(img/icons/Add_Button.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      height: 20px;
+      width: 20px;
     }
 
   </style>
@@ -61,27 +87,9 @@
 
 <body>
   <div id="searchBar">
-    <img src="img/icons/Search Icon.png">
+    <div id="searchIcon"></div>
       Search for name
   </div>
   <div id="scrollableMenu">
-    <div class="person">
-      <img src="img/icons/Default Profile.png" class="profile">
-      <div class="name">
-      Name 1
-      </div>
-    </div>
-    <div class="person">
-      <img src="img/icons/Default Profile.png" class="profile">
-      <div class="name">
-        Name 2
-      </div>
-    </div>
-    <div class="person">
-      <img src="img/icons/Default Profile.png" class="profile">
-      <div class="name">
-        Name 3
-      </div>
-    </div>
   </div>
 </body>

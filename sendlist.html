@@ -17,7 +17,6 @@
 
     #headerMenu{
       position: fixed;
-      text-align: center;
       top: 0px;
       border-bottom: 1px solid #ccc;
       height: 60px;
@@ -80,15 +79,31 @@
 
     #backButton{
       position: absolute;
-      top: 30px;
-      left: 22px;
-      background: url(img/icons/Close_Button.png);
+      top: 25px;
+      left: 20px;
+      background: url(img/icons/back.png);
       background-size: cover;
       -webkit-background-size: cover;
       -moz-background-size: cover;
-      height: 15px;
-      width: 15px;
+      height: 30px;
+      width: 30px;
       opacity: 0.5;
+    }
+
+    #selectAll{
+      float: left;
+      top: 30px;
+
+    }
+
+    #select{
+      position: absolute;
+      top: 0px;
+      right: 40px;
+      margin-right: 0px;
+      background-color: inherit;
+      height: inherit;
+
     }
 
   </style>
@@ -96,8 +111,13 @@
 
 <body>
   <div id="headerMenu">
-    <div id="backButton"></div>
-    Select All
+    <a href="frontPage.html">
+      <div id="backButton"></div>
+    </a>
+    <div id="select">
+      Select All
+    </div>
+    <div class="addButton" id="selectAll"></div>
   </div>
   <div id="wrapper">
     <div id="scrollableMenu">

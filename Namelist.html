@@ -16,6 +16,7 @@
     }
 
     #searchBar{
+      position: relative;
       border-bottom: 1px solid #ccc;
       padding-left: 10px;
       height: 60px;
@@ -90,6 +91,19 @@
       margin-left: 10px;
     }
 
+    #closeButton{
+      position: absolute;
+      top: 35px;
+      right: 12px;
+      background: url(img/icons/Close_Button.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      height: 15px;
+      width: 15px;
+      opacity: 0.5;
+    }
+
   </style>
 </head>
 
@@ -97,6 +111,7 @@
   <div id="searchBar">
     <div id="searchIcon"></div>
     <input id="searchInput" type="name" placeholder="Search for name"/>
+    <div id="closeButton"></div>
   </div>
   <div id="scrollableMenu">
   </div>

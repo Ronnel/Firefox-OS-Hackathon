@@ -10,8 +10,8 @@
     "128": "/img/icons/icon128x128.png"
   },
   "developer": {
-    "name": "Your name",
-    "url": "http://example.com"
+    "name": "Expedyte",
+    "url": "http://ronneldavis.com"
   },
   "type": "privileged",
   "permissions": {
@@ -21,17 +21,5 @@
   },
   "installs_allowed_from": [
     "*"
-  ],
-  "locales": {
-    "es": {
-      "name": "Aplicación privilegiada",
-      "description": "Demuestra cómo utilizar permisos para cargar contenido remoto",
-      "permissions": {
-        "systemXHR": {
-          "description": "Requerido para cargar contenido remoto"
-        }
-      }
-    }
-  },
-  "default_locale": "en"
+  ]
 }

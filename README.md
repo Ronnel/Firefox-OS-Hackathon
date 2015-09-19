@@ -15,3 +15,15 @@ Team members:
 2. Ashiq Muhammad
 3. Ronnel Davis
 4. John V. George
+
+Inspiration:
+------------
+
+![Main Page]
+(https://d13yacurqjgara.cloudfront.net/users/130714/screenshots/2131113/ca2014-invite.jpg)
+
+![Search]
+(https://d13yacurqjgara.cloudfront.net/users/9916/screenshots/2234879/provider-search.png)
+
+![Profile]
+(https://d13yacurqjgara.cloudfront.net/users/675229/screenshots/2242471/screen_shot_2015-09-13_at_11.40.54_am.png)

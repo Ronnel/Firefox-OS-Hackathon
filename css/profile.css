@@ -35,6 +35,10 @@ font-family: 'Open Sans';
 	margin-left: -50px;
 }
 
+.hidden{
+	display: none;
+}
+
 #prfname{
 	width: 160px;
 	position: absolute;

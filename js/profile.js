@@ -12,6 +12,13 @@ $(document).ready(function(){
   $("#prfpic").css("background-size", "cover");
   $("#prfpic").css("-webkit-background-size", "cover");
   $("#prfpic").css("-moz-background-size", "cover");
+
+  $('#prfpic').on('click', function() {
+    $('#profile-image-upload').click();
+});
+
+
+
 });
 
 function submit(){
@@ -31,4 +38,16 @@ function submit(){
           alert("Changes Have Been Saved");
           return;
         }
+}
+
+document.getElementById('profile-image-upload').onchange = function(e) {
+    // Get the first file in the FileList object
+    var imageFile = this.files[0];
+    // get a local URL representation of the image blob
+    var url = window.URL.createObjectURL(imageFile);
+    // Now use your newly created URL!
+    $("#prfpic").css("background", "url("+url+") center");
+    $("#prfpic").css("background-size", "cover");
+    $("#prfpic").css("-webkit-background-size", "cover");
+    $("#prfpic").css("-moz-background-size", "cover");
 }

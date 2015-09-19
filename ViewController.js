@@ -5,7 +5,7 @@ var parentClass = new View({
         	color: "white",
       	},
   		oncreate: function(){
-          	alert('All you singe ladies!');
+          	alert('All you single ladies!');
   		},
   		onclick: function(x, y){
 		}

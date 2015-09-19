@@ -48,21 +48,31 @@
             box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.3);
         }
 
-        #timer{
-            width: 200px;
-            height: 200px;
+        #timer, #timer-inner{
+            width: 300px;
+            height: 300px;
             text-align: center;
             font-size: 64px;
             position: absolute;
             top: 50%;
             left: 50%;
             border-radius: 50%;
-            border: 5px solid #fff;
             background: rgba(0,0,0,0.3);
-            line-height: 200px;
-            margin-top: -150px;
-            margin-left: -100px;
+            line-height: 300px;
+            margin-top: -200px;
+            margin-left: -150px;
             z-index: 100;
+        }
+        #timer-inner{
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            -webkit-transform: scale(0);
+            -moz-transform: scale(0);
+            margin-top: -150px;
+
+            transition: all 1s linear;
+            -moz-transition: all 1s linear;
+            -webkit-transition: all 1s linear;
         }
         #visualiser{
             width: 100%;
@@ -72,12 +82,14 @@
             position: absolute;
             margin-top: -200px;
         }
+
         </style>
     </head>
     <body>
 
         <div id="wrapper">
             <div id="timer">
+                <div id="timer-inner"></div>
                 <span id="current-time">0</span>
             </div>
 

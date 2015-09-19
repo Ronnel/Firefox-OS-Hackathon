@@ -16,18 +16,28 @@
     }
 
     #searchBar{
-      position: relative;
+      position: fixed;
+      top: 0px;
       border-bottom: 1px solid #ccc;
       padding-left: 10px;
       height: 60px;
+      width: 100%;
       color: #6c7a89;
       font-size: 17px;
       line-height: 80px;
       background-color: #eee;
+      z-index: 1000;
+    }
+
+    #wrapper{
+      margin-top: 61px;
+      position: relative;
     }
 
     #scrollableMenu{
-      margin-top: 0px;
+      z-index: 800;
+      position: relative;
+      overflow: scroll;
     }
 
     .person{
@@ -84,6 +94,7 @@
       border: none;
       border-radius: 0px;
       border-bottom: 1px solid #bbb;
+      width: 65%;
       background: none;
       color: inherit;
       font-size: inherit;
@@ -94,7 +105,7 @@
     #closeButton{
       position: absolute;
       top: 35px;
-      right: 12px;
+      right: 22px;
       background: url(img/icons/Close_Button.png);
       background-size: cover;
       -webkit-background-size: cover;
@@ -113,6 +124,8 @@
     <input id="searchInput" type="name" placeholder="Search for name"/>
     <div id="closeButton"></div>
   </div>
-  <div id="scrollableMenu">
+  <div id="wrapper">
+    <div id="scrollableMenu">
+    </div>
   </div>
 </body>

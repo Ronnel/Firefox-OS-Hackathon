@@ -5,6 +5,10 @@ window.onload= function(){
   arr[1]= new Person(2, "Carl", "img/icons/Default_Profile_2.jpg");
   arr[2]= new Person(3, "Max", "img/icons/Max.jpg");
 
+  for(var i=3;i<50;++i){
+    arr[i]= new Person(i+1, "Gakuto", "img/icons/Gakuto_face.jpg");
+  }
+
   for(var i=0;i<arr.length;++i){
   document.getElementById("scrollableMenu").appendChild(arr[i].div);
   }

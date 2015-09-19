@@ -1,4 +1,14 @@
 window.mediaRecorder = false;
+var canvas = document.getElementById("visualiser");
+var audioStream;
+// visualiser setup - create web audio api context and canvas
+
+var audioCtx = new (window.AudioContext || webkitAudioContext)();
+var canvasCtx = canvas.getContext("2d");
+
+window.timer = {};
+window.currentTime = 0;
+
 
 window.onload = function(){
 
@@ -32,6 +42,7 @@ window.onload = function(){
         },
         // Success callback
         function(stream) {
+            audioStream = stream;
             mediaRecorder = new MediaRecorder(stream);
         },
 
@@ -52,8 +63,6 @@ window.scale = function scale(el, val) {
     el.style.transform = 'scale3d(' + val + ', ' + val + ', 1)';
 }
 
-window.timer = {};
-window.currentTime = 0;
 function startRecord(){
     timer = window.setInterval(function() {
         currentTime += 1;
@@ -61,6 +70,7 @@ function startRecord(){
     }, 1000);
     if(mediaRecorder){
         mediaRecorder.start();
+        visualize(audioStream);
         console.log("recorder started");
     }
 }
@@ -75,6 +85,7 @@ function endRecord(){
         mediaRecorder.ondataavailable = function(e) {
             console.log("data available");
             var audio = document.createElement('audio');
+            audio.style.display = "none";
             audio.setAttribute('controls', '');
             document.body.appendChild(audio);
             var audioURL = window.URL.createObjectURL(e.data);
@@ -82,6 +93,60 @@ function endRecord(){
             audio.play();
         }
     }
+}
+
+function visualize(stream) {
+  var source = audioCtx.createMediaStreamSource(stream);
+
+  var analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  var bufferLength = analyser.frequencyBinCount;
+  var dataArray = new Uint8Array(bufferLength);
+
+  source.connect(analyser);
+  //analyser.connect(audioCtx.destination);
+
+  var WIDTH = canvas.width
+  var HEIGHT = canvas.height;
+
+  draw();
+
+  function draw() {
+
+    requestAnimationFrame(draw);
+
+    analyser.getByteTimeDomainData(dataArray);
+
+    canvasCtx.fillStyle = '#3F404E';
+    canvasCtx.fillRect(0, 0, WIDTH, HEIGHT);
+
+    canvasCtx.lineWidth = 2;
+    canvasCtx.strokeStyle = 'rgb(150, 150, 150)';
+
+    canvasCtx.beginPath();
+
+    var sliceWidth = WIDTH * 1.0 / bufferLength;
+    var x = 0;
+
+
+    for(var i = 0; i < bufferLength; i++) {
+
+      var v = dataArray[i] / 128.0;
+      var y = v * HEIGHT/2;
+
+      if(i === 0) {
+        canvasCtx.moveTo(x, y);
+      } else {
+        canvasCtx.lineTo(x, y);
+      }
+
+      x += sliceWidth;
+    }
+
+    canvasCtx.lineTo(canvas.width, canvas.height/2);
+    canvasCtx.stroke();
+
+  }
 }
 
 

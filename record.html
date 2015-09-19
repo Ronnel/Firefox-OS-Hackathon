@@ -5,7 +5,7 @@
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/swift.js"></script>
         <script type="text/javascript" src="js/rebound.js"></script>
-        <script type="text/javascript" src="js/record.js"></script>
+        <script type="text/javascript" src="js/record.js" defer></script>
         <style>
 
         *{
@@ -39,7 +39,8 @@
             height: 80px;
             width: 80px;
             border-radius: 50%;
-            background: #e74c3c;
+            background: url(img/icons/mic.png) center no-repeat, #e74c3c;
+            background-size: 50%;
             position: absolute;
             bottom: 20px;
             left: 50%;
@@ -67,9 +68,9 @@
                 <span id="current-time">0</span>/15
             </div>
 
-            <div id="speek-button">
-                <img src="img/icons/mic.png" style="width: 50%; margin: 25%;" />
-            </div>
+            <canvas id="visualiser" style="width: 100%; height: 300px; background: none;"></canvas>
+
+            <div id="speek-button"></div>
         </div>
     </body>
 </html>

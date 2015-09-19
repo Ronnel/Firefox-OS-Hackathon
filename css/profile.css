@@ -12,12 +12,12 @@
 }
 
 #prfpic{
-	width: 240px;
+	width: 200px;
 	position: relative;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	left: 50%;
-	margin-left: -120px;
+	margin-left: -100px;
 }
 
 img.prf
@@ -31,16 +31,23 @@ img.prf
 }
 
 #prfname{
+	width: 200px;
 	position: relative;
-	text-align: center;
+	padding-top: 10px;
+	left: 50%;
 	font-size: 30px;
-  height: 40px;
+	margin-left: -100px;
+	color: white;
 	padding-top: 180px;
   margin-top: 10px;
   padding-bottom: 5px;
+	text-align: center;
 }
 
 #status{
+	width: 200px;
+	left:50%;
+	margin-left: -100px;
 	position: relative;
 	text-align: center;
 	font-size: 15px;
@@ -65,9 +72,9 @@ li{
 			position: relative;
 			color: white;
 			padding: 10px 0px;
-			font-size: 10px;
+			font-size: 15px;
 			border: none;
-			border-bottom: 1px solid white;
+			border-bottom: 0px solid white;
 	    border-radius: 0;
 			outline: none;
 	    font-family: 'Avenir', sans-serif;

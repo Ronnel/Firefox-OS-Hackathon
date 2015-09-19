@@ -26,24 +26,17 @@ header{
 #bsearch{
     width: 30px;
     right :5px;
-<<<<<<< HEAD
-    margin-top: 5px;
-    height: 50px;
-    position: absolute;
-    z-index: 1001;
-=======
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-right: 5px;
     height: 30px;
     position: absolute;
-    z-index: 1001; 
->>>>>>> origin/master
+    z-index: 1001;
 }
 
 #bprofile{
-    width: 30px;
+    width: 35px;
     left: 5px;
-    height: 30px;
+    height: 35px;
     margin-top: 10px;
     margin-left: 5px;
     position: absolute;

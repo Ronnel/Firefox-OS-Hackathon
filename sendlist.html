@@ -15,11 +15,11 @@
       background-color: #fff;
     }
 
-    #cancelButton{
+    #headerMenu{
       position: fixed;
+      text-align: center;
       top: 0px;
       border-bottom: 1px solid #ccc;
-      padding-left: 10px;
       height: 60px;
       width: 100%;
       color: #6c7a89;
@@ -78,12 +78,26 @@
       opacity: 0.5;
     }
 
+    #backButton{
+      position: absolute;
+      top: 30px;
+      left: 22px;
+      background: url(img/icons/Close_Button.png);
+      background-size: cover;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      height: 15px;
+      width: 15px;
+      opacity: 0.5;
+    }
+
   </style>
 </head>
 
 <body>
-  <div id=cancelButton>
-    Cancel
+  <div id="headerMenu">
+    <div id="backButton"></div>
+    Select All
   </div>
   <div id="wrapper">
     <div id="scrollableMenu">

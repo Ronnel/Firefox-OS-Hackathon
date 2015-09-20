@@ -1,3 +1,4 @@
+var selected= new Array();
 window.onload=function(){
     Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
 
@@ -18,7 +19,11 @@ window.onload=function(){
             }
         });
     }
-
+    
+    $("#sendButton").click(function(){
+        
+        
+    })
     $("#searchInput").on("keydown", function(){
         completion($(this).val());
     });
@@ -30,7 +35,14 @@ function layout(arr){
         var person = new Person(arr[i].id, arr[i].name, arr[i].img);
         document.getElementById("scrollableMenu").appendChild(person.div);
     }
-
+    $(".person").click(function(){
+        $(this).find(".addButton").fadeOut(100);
+        $(this).parent().css("background","#f5d76e");
+       selected.push($(this).attr("data-person"));
+        $(this).parent().attr("data-selected","true");
+    });
+    
+    
 }
 
 
@@ -40,6 +52,7 @@ var Person = function(id, name, image){
   this.image=image;
   var div= document.createElement("div");
   div.setAttribute("class","person");
+  div.setAtribute("data-selected","false");
   div.innerHTML="<div class='profile' style='background: url("+image+"); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover;'></div><div class='name'>"+name+"</div><div class='addButton'></div>";
   this.div= div;
   return this;

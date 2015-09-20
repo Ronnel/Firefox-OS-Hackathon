@@ -70,7 +70,7 @@ function play(person){
 					        else{
 					            var GameScore2 = Parse.Object.extend("TestObject");
 			                    var query2 = new Parse.Query(GameScore2);
-			                    query2.equalTo("from", person.find('.person').attr("data-person")).equalTo("to", Parse.User.current().id).descending("createdAt").first({
+			                    query2.equalTo("from", $(person).attr("data-person")).equalTo("to", Parse.User.current().id).descending("createdAt").first({
                                     success: function(gameScore2) {
                                         if(gameScore2){
                                             playRecord(gameScore2.attributes.audioFile._url);
@@ -196,31 +196,36 @@ function endRecord(){
             var audioURL = window.URL.createObjectURL(e.data);
             blobToDataURL(e.data, function(data){
                 console.log(data);
-                pffile = new Parse.File("audio.ogg", { base64: data });
-                pffile.save().then(function() {
-                    console.log("Audio saved");
-                    var objs = Parse.Object.extend("TestObject");
-                    var audioObj = new objs();
-
-                    audioObj.set("audioFile", pffile);
-                    audioObj.set("from", Parse.User.current().id);
-                    audioObj.set("to", "7Pv68MTwiL");
-                    audioObj.set("unread", true);
-                    audioObj.save().then(function() {
-                      // The file has been saved to Parse.
-                      console.log("Save successful");
-                    }, function(error) {
-                      // The file either could not be read, or could not be saved to Parse.
-                    });
-                }, function(error) {
-                    // The file either could not be read, or could not be saved to Parse.
-                });
-            });
-
-            //window.location = "sendlist.html";
+                $.jStorage.set("audio", data);
+                window.location = "sendlist.html";
         }
     }
 }
+
+/*
+
+pffile = new Parse.File("audio.ogg", { base64: data });
+pffile.save().then(function() {
+    console.log("Audio saved");
+    var objs = Parse.Object.extend("TestObject");
+    var audioObj = new objs();
+
+    audioObj.set("audioFile", pffile);
+    audioObj.set("from", Parse.User.current().id);
+    audioObj.set("to", "7Pv68MTwiL");
+    audioObj.set("unread", true);
+    audioObj.save().then(function() {
+      // The file has been saved to Parse.
+      console.log("Save successful");
+    }, function(error) {
+      // The file either could not be read, or could not be saved to Parse.
+    });
+}, function(error) {
+    // The file either could not be read, or could not be saved to Parse.
+});
+});
+
+*/
 
 function visualize(stream) {
   var source = audioCtx.createMediaStreamSource(stream);

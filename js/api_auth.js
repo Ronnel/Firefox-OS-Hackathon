@@ -27,11 +27,10 @@ function submit(){
 						 $("#auth_page").fadeOut();
 						 $.jStorage.set("email", $("#form1_email").val());
 						 $.jStorage.set("password", $("#form1_password").val());
-						 alert("logged in");
 			},
 			error: function(user, error) {
 				// The login failed. Check error to see why.
-				Android.showToast("Error: " + error.code + " " + error.message);
+				alert("Error: " + error.code + " " + error.message);
 			}
 		});
 	}
@@ -49,11 +48,11 @@ function submit(){
 		user.signUp(null, {
 			  success: function(user) {
 					// Hooray! Let them use the app now.
-					Android.showToast("Signed Up!");
+					alert("Signed Up!");
 			  },
 			  error: function(user, error) {
 					// Show the error message somewhere and let the user try again.
-					Android.showToast("Error: " + error.code + " " + error.message);
+					alert("Error: " + error.code + " " + error.message);
 			  }
 		});
 	}
@@ -62,6 +61,7 @@ function submit(){
 
 $(document).ready(function() {
 		Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
+		$("#form1_email").focus();
 
 		$("#toggle").click(toggle);
 		$("#send_form").click(submit);
@@ -76,17 +76,17 @@ $(document).ready(function() {
         if(!$.jStorage.get("password") || !$.jStorage.get("email")){
             $("#auth_page").fadeIn();
             var icons = [], i=1, elem;
-            
+
         }
         else{
                 Parse.User.logIn( $.jStorage.get("email"), $.jStorage.get("password") , {
                 success: function(user) {
-                             getFriends();
-                             Android.auth( $.jStorage.get("email"), $.jStorage.get("password") );
+
+                             window.location="./frontPage.html";
                 },
                 error: function(user, error) {
                     // The login failed. Check error to see why.
-                    Android.showToast("Error: " + error.code + " " + error.message);
+                    alert("Error: " + error.code + " " + error.message);
                 }
             });
         }
@@ -255,13 +255,13 @@ function addFriend(id){
 									    $("#autocomplete").html("");
 									    if(tutorial_enabled){
 									        tutorial_enabled = false;
-									        Android.showToast("Swipe right on a contact to read message");
+									        alert("Swipe right on a contact to read message");
 									    }
 						             },
 									 error: function(gameScore, error) {
 									    // Execute any logic that should take place if the save fails.
 									    // error is a Parse.Error with an error code and message.
-									    Android.showToast('Failed to add friend, with error code: ' + error.message);
+									    alert('Failed to add friend, with error code: ' + error.message);
 									    getFriends();
 									    toggle_search();
 									 }
@@ -368,7 +368,7 @@ function remove(person){
 
         Parse.User.current().save(null, {
             success: function(){ getFriends(); },
-            error: function(){ Android.showToast('Delete unsuccessful'); }
+            error: function(){ alert('Delete unsuccessful'); }
         });
 }
 
@@ -403,7 +403,7 @@ function play(person){
                                             Android.playRecord(gameScore2.attributes.audioFile._url);
                                         }
                                         else{
-					                        Android.showToast("No new messages");
+					                        alert("No new messages");
 					                    }
 					                },
                                     error: function(object, error) {

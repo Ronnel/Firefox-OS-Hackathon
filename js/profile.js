@@ -1,5 +1,10 @@
 $(document).ready(function(){
   Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
+
+  $("#prfname").val(Parse.User.current().attributes.name);
+  $("#status").val(Parse.User.current().attributes.status);
+  $("#email").val(Parse.User.current().attributes.email);
+  console.log(Parse.User.current());
   $("input").focus(function(){
       $(".footer").fadeOut(0);
   });
@@ -31,19 +36,17 @@ $('#lgout').click(function() {
 
 function submit(){
 		var obj=[
-			document.getElementById("name").value,
+			document.getElementById("prfname").value,
 			document.getElementById("email").value,
-      document.getElementById("phone").value,
-      document.getElementById("school").value,
-      document.getElementById("prfname").value,
       document.getElementById("status").value,
+      document.getElementById("pass").value,
   ];
-        if (!document.getElementById("name").value || !document.getElementById("email").value || !document.getElementById("phone").value || !document.getElementById("school").value || !document.getElementById("prfname").value || !document.getElementById("status").value) {
+        if (!document.getElementById("prfname").value || !document.getElementById("email").value || !document.getElementById("status").value) {
             alert("Fill All Input Fields And Try Again");
             return;
         }
         else {
-          alert("Changes Have Been Saved");
+          alert("Data Has Been Saved");
           return;
         }
 }

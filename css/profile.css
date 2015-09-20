@@ -51,21 +51,21 @@ font-family: 'Open Sans';
 }
 
 #prfname{
-	width: 160px;
+	width: 260px;
 	position: absolute;
 	padding: 10px;
 	left: 50%;
 	font-size: 30px;
-	margin-left: -90px;
+	margin-left: -140px;
   top: 200px;
 	text-align: center;
 }
 
 #status{
-	width: 130px;
+	width: 200px;
 	left:50%;
 	top: 250px;
-	margin-left: -75px;
+	margin-left: -120px;
 	position: absolute;
 	text-align: center;
 	font-size: 15px;
@@ -100,7 +100,7 @@ ul{
 			width: calc(100% - 80px);
 			left: 0px;
 			height: 25px;
-			margin: 0px;
+			margin: 10px auto;
 			margin-bottom: 2px;
 			font-size: 15px;
 			border: none;

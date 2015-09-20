@@ -61,7 +61,12 @@ function submit(){
 
 $(document).ready(function() {
 		Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
-		$("#form1_email").focus();
+		$("input").focus(function(){
+	      $("#toggle, #send_form").fadeOut(0);
+	  });
+	  $("input").blur(function(){
+	      $("#toggle, #send_form").fadeIn(0);
+	  });
 
 		$("#toggle").click(toggle);
 		$("#send_form").click(submit);

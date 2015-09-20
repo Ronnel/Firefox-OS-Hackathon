@@ -4,6 +4,7 @@ var contact = function(id, name, dp){
   this.dp=dp;
   var div= document.createElement("div");
   div.setAttribute("class", "contacts");
+  div.setAttribute("data-person", id);
   div.innerHTML="<div class='profile_pic' style='background: url("+dp+"); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover;'></div><div class='name'>"+name+"</div><div class='addButton'></div>";
   this.div=div;
   return this;
@@ -40,8 +41,56 @@ function layout(arr){
     for(var i=0; i<arr.length; ++i){
         var person = new contact(arr[i].id, arr[i].name, arr[i].img);
         document.getElementById("scroller").appendChild(person.div);
+        $(person.div).click(function(){ play(this); });
     }
 
+}
+
+function playRecord(url){
+    var aud = document.createElement("audio");
+    aud.setAttribute("src", url);
+    aud.style.display = "none";
+    aud.play();
+}
+
+
+function play(person){
+					var GameScore = Parse.Object.extend("TestObject");
+			        var query = new Parse.Query(GameScore);
+			        query.equalTo("from", $(person).attr("data-person")).equalTo("unread", true).equalTo("to", Parse.User.current().id).descending("createdAt").first({
+				        success: function(gameScore) {
+				            if(gameScore){
+					            playRecord(gameScore.attributes.audioFile._url);
+					            gameScore.set("unread", false);
+					            gameScore.save(null, {
+                                    success: function(){  },
+                                    error: function(){  }
+                                });
+					        }
+					        else{
+					            var GameScore2 = Parse.Object.extend("TestObject");
+			                    var query2 = new Parse.Query(GameScore2);
+			                    query2.equalTo("from", person.find('.person').attr("data-person")).equalTo("to", Parse.User.current().id).descending("createdAt").first({
+                                    success: function(gameScore2) {
+                                        if(gameScore2){
+                                            playRecord(gameScore2.attributes.audioFile._url);
+                                        }
+                                        else{
+					                        alert("No new messages");
+					                    }
+					                },
+                                    error: function(object, error) {
+                                        // The object was not retrieved successfully.
+                                        // error is a Parse.Error with an error code and message.
+                                    }
+					            });
+					        }
+				        },
+				        error: function(object, error) {
+					        // The object was not retrieved successfully.
+					        // error is a Parse.Error with an error code and message.
+				        }
+			        });
 }
 
 
@@ -127,6 +176,14 @@ function startRecord(){
     }
 }
 
+function blobToDataURL(blob, callback) {
+    var a = new FileReader();
+    a.onload = function(e) {callback(e.target.result);}
+    a.readAsDataURL(blob);
+}
+
+var pffile;
+
 function endRecord(){
     window.clearInterval(timer);
     currentTime = 0;
@@ -136,17 +193,31 @@ function endRecord(){
 
         mediaRecorder.ondataavailable = function(e) {
             console.log("data available");
-            var audio = document.createElement('audio');
-            audio.style.display = "none";
-            audio.setAttribute('controls', '');
-            document.body.appendChild(audio);
             var audioURL = window.URL.createObjectURL(e.data);
-            console.log(audioURL);
-            audio.src = audioURL;
-            //audio.play();
-            var pffile = new Parse.File("myfile.zzz", e.data, "image/png");
+            blobToDataURL(e.data, function(data){
+                console.log(data);
+                pffile = new Parse.File("audio.ogg", { base64: data });
+                pffile.save().then(function() {
+                    console.log("Audio saved");
+                    var objs = Parse.Object.extend("TestObject");
+                    var audioObj = new objs();
 
-            window.location = "sendlist.html";
+                    audioObj.set("audioFile", pffile);
+                    audioObj.set("from", Parse.User.current().id);
+                    audioObj.set("to", "7Pv68MTwiL");
+                    audioObj.set("unread", true);
+                    audioObj.save().then(function() {
+                      // The file has been saved to Parse.
+                      console.log("Save successful");
+                    }, function(error) {
+                      // The file either could not be read, or could not be saved to Parse.
+                    });
+                }, function(error) {
+                    // The file either could not be read, or could not be saved to Parse.
+                });
+            });
+
+            //window.location = "sendlist.html";
         }
     }
 }

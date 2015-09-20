@@ -17,6 +17,13 @@ $(document).ready(function(){
     $('#profile-image-upload').click();
 });
 
+$('#prfpic').click(function() {
+  Parse.User.current().logout();
+  $.jStorage.deleteKey("email");
+  $.jStorage.deleteKey("password");
+  window.location="./api_auth.html";
+});
+
 
 
 });

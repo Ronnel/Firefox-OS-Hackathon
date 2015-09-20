@@ -6,8 +6,28 @@
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
 	<script src="./js/jquery.js"></script>
 	<link type="text/css" href="./css/style_frontpage.css" rel="stylesheet"/>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
 	<script src="./js/front_page.js"></script>
+    <script type="text/javascript" src="js/swift.js"></script>
+    <script type="text/javascript" src="js/rebound.js"></script>
+    <script type="text/javascript" src="js/record.js" defer></script>
+    <style>
+        #speek-button{
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            background: url(./img/icons/mic.png) center no-repeat, #e74c3c;
+            background-size: 50%;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            margin-left: -40px;
+            border: 3px solid #ccc;
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
 	<header>
@@ -18,7 +38,19 @@
 <div id="wrapper">
 	<div id="scroller"></div>
 </div>
-<a href="record.html"><div id="brecord"><img src="img/icons/mic.png" style="width: 50%; margin: 25%;" /></div></a>
+
+<div id="record-wrapper">
+    <div id="timer">
+        <div id="timer-inner"></div>
+        <span id="current-time">0</span>
+    </div>
+
+    <canvas id="visualiser"></canvas>
+
+</div>
+
+<div id="speek-button"></div>
+
 </body>
 
 </html>

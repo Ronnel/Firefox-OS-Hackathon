@@ -198,6 +198,7 @@ function endRecord(){
                 console.log(data);
                 $.jStorage.set("audio", data);
                 window.location = "sendlist.html";
+            });
         }
     }
 }

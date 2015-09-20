@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<head>
+
+<title>Expedyte-Login</title>
+
+<script src="js/jquery.js" type="text/javascript"></script>
+<script src="js/parse.js" type="text/javascript"></script>
+<script src="js/jstorage.js" type="text/javascript"></script>
+<script src="js/tapandhold.js" type="text/javascript"></script>
+<script src="js/transit.js" type="text/javascript"></script>
+<script src="js/conversationsCore.js" type="text/javascript"></script>
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<script type="text/javascript" src="js/api_auth.js"></script>
+
+<style type="text/css">
+
+@font-face{
+font-family: 'Roboto';
+font-weight: 100;
+src: url(fonts/Roboto-Thin.ttf)
+}
+@font-face{
+font-family: 'Roboto';
+font-weight: 300;
+src: url(fonts/Roboto-Light.ttf)
+}
+@font-face{
+font-family: 'Roboto';
+font-weight: 400;
+src: url(fonts/Roboto-Regular.ttf)
+}
+@font-face{
+font-family: 'Roboto';
+font-weight: 600;
+src: url(fonts/Roboto-Medium.ttf)
+}
+
+@font-face{
+font-family: 'Dosis';
+font-weight: 100;
+src: url(fonts/Dosis-Light.ttf)
+}
+@font-face{
+font-family: 'Dosis';
+font-weight: 300;
+src: url(fonts/Dosis-Medium.ttf)
+}
+@font-face{
+font-family: 'Dosis';
+font-weight: 400;
+src: url(fonts/Dosis-Regular.ttf)
+}
+@font-face{
+font-family: 'Dosis';
+font-weight: 600;
+src: url(fonts/Dosis-SemiBold.ttf)
+}
+
+input[type=search]{
+-webkit-appearance:button;
+background: none;
+}
+::-webkit-input-placeholder{
+color: #000;
+}
+:-moz-placeholder{
+color: #000;
+}
+::-moz-placeholder{
+color: #000;
+}
+::-ms-input-placeholder{
+color: #000;
+}
+
+html,body{
+font-family: 'Roboto', sans-serif;
+font-weight: 300;
+width: 100%;
+margin: 0px;
+background: #eee;
+overflow-x: hidden;
+overflow-y: auto;
+}
+#bg{
+height: 100%;
+width: 100%;
+position: absolute;
+background: #fff;
+}
+
+.buttons{
+position: absolute;
+color: #fff;
+font-size: 30px;
+font-weight: 200;
+height: 30px;
+font-size: 18px;
+font-weight: 300;
+text-align: center;
+line-height: 45px;
+z-index: 2;
+cursor: pointer;
+width: 260px;
+height: 45px;
+left: 50%;
+margin-left: -130px;
+margin-top: 80px;
+margin-bottom: 20px;
+float: left;
+border-radius: 5px;
+bottom: 40px;
+background: #2196F3;
+}
+.heading{
+text-align: center;
+width: 100%;
+margin-top: 60px;
+margin-bottom: 40px;
+position: relative;
+color: #000;
+font-weight: 100;
+font-size: 38px;
+}
+#subtitle{
+font-size: 20px;
+color: #333;
+font-weight: 500;
+width: calc(100% - 40px);
+margin-left: 20px;
+text-align: center;
+height: 40px;
+margin-top: -130px;
+position: absolute;
+top: 170px;
+}
+
+
+#auto_scroll{
+    position: absolute;
+    top: 60px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+}
+#auto_scroll img{
+    height: 80px;
+		margin-top: -20px;
+    position: absolute;
+}
+
+#toggle{
+position: absolute;
+bottom: 20px;
+width: 100%;
+z-index: 500;
+text-align: center;
+color: #000;
+}
+.form2{
+display: none;
+}
+#forms{
+position: absolute;
+left: 50%;
+margin-left: -130px;
+width: 260px;
+bottom: 150px;
+}
+input{
+border: none;
+border-radius: 0px;
+border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+width: 220px;
+height: 45px;
+margin-bottom: 10px;
+padding: 0px 20px;
+font-size: 16px;
+background: none;
+color: #000;
+outline: none;
+font-family: 'Roboto', sans-serif;
+}
+
+
+.header{
+width: 100%;
+height: 80px;
+color: #fff;
+position: fixed;
+overflow: hidden;
+z-index: 50;
+background: #2196F3;
+}
+
+.subheader{
+width: 100%;
+height: 50px;
+background-color: #fff;
+position: fixed;
+overflow: hidden;
+z-index: 50;
+}
+
+</style>
+</head>
+<body>
+
+<div id="auth_page">
+
+    <div id="bg"></div>
+
+		<div id="subtitle" class="subheader">
+Welcome to Speek
+		</div>
+
+    <div id="forms">
+        <div class="form1">
+            <input type="email" id="form1_email" placeholder="Email" />
+            <input type="password" id="form1_password" placeholder="Password" />
+        </div>
+        <div class="form2">
+            <input type="text" id="form2_name" placeholder="Full Name" />
+            <input type="email" id="form2_email" placeholder="Email" />
+            <input type="password" id="form2_password" placeholder="password" />
+        </div>
+    </div>
+
+    <div class="buttons" id="send_form">Log In</div>
+
+    <div id="toggle">
+        <span class="form1">Don't have an account? <span style="text-decoration: underline;">Sign up</span></span>
+        <span class="form2">Already have an account? <span style="text-decoration: underline;">Log in</span></span>
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

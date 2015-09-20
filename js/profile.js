@@ -35,27 +35,46 @@ $('#lgout').click(function() {
 });
 
 function submit(){
-		var obj=[
-			document.getElementById("prfname").value,
-			document.getElementById("email").value,
-      document.getElementById("status").value,
-      document.getElementById("pass").value,
-  ];
-        if (!document.getElementById("prfname").value || !document.getElementById("email").value || !document.getElementById("status").value) {
-            alert("Fill All Input Fields And Try Again");
-            return;
-        }
-        else {
-          alert("Data Has Been Saved");
-          return;
-        }
-}
 
+		var name =	document.getElementById("prfname").value;
+    var name_lowercase = name.toLowerCase();
+		var email =	document.getElementById("email").value;
+    var username = email;
+    var status =  document.getElementById("status").value;
+    var password =  document.getElementById("pass").value;
+
+    var user = Parse.User.current();
+
+    user.set("name", name);
+    user.set("email", email);
+    user.set("status", status);
+    user.set("username", username);
+    user.set("name_lowercase", name_lowercase);
+
+    user.save().then(function(){
+      alert("Successfully Saved");
+    });
+
+
+
+}
+var parseFile;
 document.getElementById('profile-image-upload').onchange = function(e) {
     // Get the first file in the FileList object
     var imageFile = this.files[0];
     // get a local URL representation of the image blob
     var url = window.URL.createObjectURL(imageFile);
+    parseFile = new Parse.File("image.jpg", imageFile);
+
+   //put this inside if {
+   parseFile.save().then(function() {
+      // The file has been saved to Parse.
+      Parse.User.current().set("profile_pic", parseFile);
+      Parse.User.save();
+   }, function(error) {
+   // The file either could not be read, or could not be saved to Parse.
+    });
+
     // Now use your newly created URL!
     $("#prfpic").css("background", "url("+url+") center");
     $("#prfpic").css("background-size", "cover");

@@ -1,18 +1,45 @@
-window.onload= function(){
+window.onload=function(){
+    Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
 
-  var arr = new Array();
-  arr[0]= new Person(1, "John", "img/icons/Default_Profile_1.png");
-  arr[1]= new Person(2, "Carl", "img/icons/Default_Profile_2.jpg");
-  arr[2]= new Person(3, "Max", "img/icons/Max.jpg");
+    if(!$.jStorage.get("password") || !$.jStorage.get("email")){
+        window.location = "./api_auth.html";
+    }
+    else{
+        Parse.User.logIn( $.jStorage.get("email"), $.jStorage.get("password") , {
+            success: function(user) {
+            },
+            error: function(user, error) {
+                // The login failed. Check error to see why.
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+    }
 
-  for(var i=3;i<50;++i){
-    arr[i]= new Person(i+1, "Gakuto", "img/icons/Gakuto_face.jpg");
-  }
-
-  for(var i=0;i<arr.length;++i){
-  document.getElementById("scrollableMenu").appendChild(arr[i].div);
-  }
+    $("#searchInput").on("keydown", function(){
+        completion($(this).val());
+    });
 }
+
+function completion(text){
+	var query = new Parse.Query(Parse.User);
+	query.startsWith("name_lowercase", text.toLowerCase());
+	query.find({
+		success: function(people) {
+			   console.log(people);
+			   document.getElementById("scrollableMenu").innerHTML = "";
+			   for(var i=0; i<people.length; ++i){
+                   var p = new Person(people[i].id, people[i].attributes.name, people[i].attributes.profile_picture);
+
+				   document.getElementById("scrollableMenu").appendChild(p.div);
+			   }
+
+               $('#scrollableMenu .person').click(function(){
+                    addFriend($(this).find(".person").attr("data-person"));
+               });
+		}
+	});
+}
+
 
 var Person = function(id, name, image){
   this.id=id;

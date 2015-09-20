@@ -23,9 +23,10 @@ function submit(){
 		Parse.User.logIn($("#form1_email").val(), $("#form1_password").val(), {
 			success: function(user) {
 						 //calliOSFunction("authenticated", [$("#form1_email").val(), $("#form1_password").val()]);
-						 $("#auth_page").fadeOut();
 						 $.jStorage.set("email", $("#form1_email").val());
 						 $.jStorage.set("password", $("#form1_password").val());
+
+						 window.location = "./frontPage.html";
 			},
 			error: function(user, error) {
 				// The login failed. Check error to see why.
@@ -65,31 +66,6 @@ $(document).ready(function() {
 		$("#toggle").click(toggle);
 		$("#send_form").click(submit);
 
-        $('.timer').css("line-height", (window.innerHeight - 100)+"px");
-
-        if(!$.jStorage.get("tutorial_enabled")){
-            $.jStorage.set("tutorial_enabled", true);
-            tutorial_enabled = true;
-        }
-
-        if(!$.jStorage.get("password") || !$.jStorage.get("email")){
-            $("#auth_page").fadeIn();
-            var icons = [], i=1, elem;
-
-        }
-        else{
-                Parse.User.logIn( $.jStorage.get("email"), $.jStorage.get("password") , {
-                success: function(user) {
-
-                             window.location="./frontPage.html";
-                },
-                error: function(user, error) {
-                    // The login failed. Check error to see why.
-                    alert("Error: " + error.code + " " + error.message);
-                }
-            });
-        }
-
 });
 
 
@@ -103,10 +79,9 @@ function completion(text){
 			   document.getElementById("autocomplete").innerHTML = "";
 			   for(var i=0; i<people.length; ++i){
 			       var name = people[i].attributes.name;
-			       var img_string = '<div class="person colorable" data-addable="true" data-person="'+people[i].id+'">'+name.split("")[0]+name.split("")[1]+'</div>';
-                   if( people[i].attributes.profile_picture ){
-                       img_string = '<div class="person" data-addable="true" data-person="'+people[i].id+'">' + "<img class='img' src='sceneicons/"+ people[i].attributes.profile_picture +".png' />" +'</div>';
-                   }
+				   
+				   img_string = '<div class="person" data-addable="true" data-person="'+people[i].id+'">' people[i].attributes.profile_picture +".png' />" +'</div>';
+
 				   document.getElementById("autocomplete").innerHTML += '<div class="third '+people[i].id+'" id="'+people[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+people[i].attributes.email+'</div></div>';
 			   }
 
@@ -145,87 +120,11 @@ function settings(){
 
 var friends;
 
-function getFriends(div){
-				Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
-
-        Parse.Cloud.run('getContacts', {
-            id: Parse.User.current().id,
-            friends: Parse.User.current().attributes.friends
-        }, {
+function getFriends(func){
+		Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
+        Parse.Cloud.run('getFriends', {}, {
             success: function(people){
-                friends = people.friends;
-                document.getElementById(scroller).innerHTML = '<div id="green"></div><div id="red"></div>';
-                console.log(people);
-                var i = 0;
-                if(people.strangers.length){
-                    	$("#"+div).append("<div class='spacer'>UNREAD MESSAGES</div>");
-                      $("#"+div).append("<div id='strangers'></div>");
-                }
-
-                $("#"+div).append("<div class='spacer'>CONTACTS</div>");
-		        		$("#"+div).append("<div id='friends'></div>");
-
-                for(i=0; i<people.friends.length; ++i){
-			            var name = people.friends[i].name;
-
-                        var img_string = '<div class="person colorable" data-addable="false" data-person="'+people.friends[i].id+'">'+name.split("")[0]+name.split("")[1]+'</div>';
-                        if( people.friends[i].profile_picture ){
-                            img_string = '<div class="person" data-addable="false" data-person="'+people.friends[i].id+'">' + "<img class='img' src='sceneicons/"+ people.friends[i].profile_picture +".png' />" +'</div>';
-                        }
-
-                        var time_string = "";
-                        var last_active;
-                        if(people.friends[i].last_active){
-                                last_active = new Date(people.friends[i].last_active);
-                                if(last_active.getHours()>12){
-                                    time_string = "Last active at " + (last_active.getHours()-12) + " PM";
-                                }
-                                else{
-                                    if(last_active.getHours()==0){
-                                        time_string = "12 AM";
-                                    }
-                                    time_string = "Last active at " + last_active.getHours() + " AM";
-                                }
-                        }
-                        else{
-                                time_string = "Last active at the beginning of time";
-                        }
-
-	                    document.getElementById(div).innerHTML += '<div class="third friend '+people.friends[i].id+'" id="'+people.friends[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>';
-                    }
-
-                    for(i=0; i<people.strangers.length; ++i){
-			            var name = people.strangers[i].name;
-
-                        var unread = "<div class='indicator'></div>";
-                        if(people.strangers[i].count>0){
-                                unread = "<div class='indicator'>"+people.strangers[i].count+"</div>";
-                        }
-                        var img_string = '<div class="person colorable" data-addable="false" data-person="'+people.strangers[i].id+'">'+name.split("")[0]+name.split("")[1]+'</div>';
-                        if( people.strangers[i].profile_picture ){
-                            img_string = '<div class="person" data-addable="false" data-person="'+people.strangers[i].id+'">' + "<img class='img' src='sceneicons/"+ people.strangers[i].profile_picture +".png' />" +'</div>';
-                        }
-
-                        var time_string = "";
-                        var last_active;
-                        if(people.strangers[i].last_active){
-                                last_active = new Date(people.strangers[i].last_active);
-                                if(last_active.getHours()>12){
-                                    time_string = "Last active at " + last_active.getHours()-12 + " PM";
-                                }
-                                else{
-                                    if(last_active.getHours()==0){
-                                        time_string = "12 AM";
-                                    }
-                                    time_string = "Last active at " + last_active.getHours() + " AM";
-                                }
-                        }
-                        else{
-                                time_string = "Last active at the beginning of time";
-                        }
-
-	                    document.getElementById(div).innerHTML += '<div class="third friend '+people.strangers[i].id+'" id="'+people.strangers[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>'+unread+'</div>';
-                    }
+				func(people);
             },
             error: function(error){
                 console.log(error);

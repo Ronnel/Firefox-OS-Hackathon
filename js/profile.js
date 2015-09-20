@@ -1,4 +1,5 @@
 $(document).ready(function(){
+  Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
   $("input").focus(function(){
       $(".footer").fadeOut(0);
   });
@@ -17,8 +18,8 @@ $(document).ready(function(){
     $('#profile-image-upload').click();
 });
 
-$('#prfpic').click(function() {
-  Parse.User.current().logout();
+$('#lgout').click(function() {
+  Parse.User.logOut();
   $.jStorage.deleteKey("email");
   $.jStorage.deleteKey("password");
   window.location="./api_auth.html";

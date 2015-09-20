@@ -21,8 +21,28 @@ window.onload=function(){
     }
     
     $("#sendButton").click(function(){
-        alert(JSON.stringify(selected));
-    });
+        pffile = new Parse.File("audio.ogg", { base64: $.jStorage.get("audio") });
+        pffile.save().then(function() {
+        console.log("Audio saved");
+        var objs = Parse.Object.extend("TestObject");
+        var audioObj = new objs();
+       for(var i=0; i<selected.length;++i){
+        audioObj.set("audioFile", pffile);
+        audioObj.set("from", Parse.User.current().id);
+        audioObj.set("to", selected[i]);
+        audioObj.set("unread", true);
+        audioObj.save().then(function() {
+         // The file has been saved to Parse.
+         console.log("Save successful");
+            }, function(error) {
+      // The file either could not be read, or could not be saved to Parse.
+            });}
+            
+    }, function(error) {
+    // The file either could not be read, or could not be saved to Parse.
+          });
+});
+
     $("#searchInput").on("keydown", function(){
         completion($(this).val());
     });

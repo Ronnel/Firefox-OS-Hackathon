@@ -25,6 +25,17 @@ font-family: 'Open Sans';
 
 }
 
+#lgout{
+  width: 35px;
+  right: 20px;
+  height: 35px;
+  margin-top: 10px;
+  margin-left: 5px;
+  position: absolute;
+  z-index: 1001;
+	opacity: 0.5;
+}
+
 #prfpic {
 	width: 100px;
 	height: 100px;
@@ -117,4 +128,5 @@ ul{
 		margin-left: -50%;
 		font-size: 18px;
 		text-align: center;
+
 	}

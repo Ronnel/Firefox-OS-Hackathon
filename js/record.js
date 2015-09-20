@@ -9,7 +9,7 @@ window.timer = {};
 window.currentTime = 0;
 
 
-window.onload = function(){
+window.prepareRecord = function(){
 
     var photo = document.getElementById("speek-button");
     var springSystem = new rebound.SpringSystem();
@@ -17,18 +17,18 @@ window.onload = function(){
     spring.addListener({
         el: photo,
         onSpringUpdate: function(spring) {
-            var val = mapValueFromRangeToRange( spring.getCurrentValue() , 0, -1, 1, 0.5);
+            var val = mapValueFromRangeToRange( spring.getCurrentValue() , 0, -1, 1, 2);
             scale(this.el, val);
         }
     });
 
     photo.addEventListener(downEvt, function() {
-        spring.setEndValue(-1);
+        spring.setEndValue(0);
         startRecord();
     });
 
     document.body.addEventListener(upEvt, function() {
-        spring.setEndValue(0);
+        spring.setEndValue(-1);
         endRecord();
     });
 
@@ -55,7 +55,7 @@ window.onload = function(){
 
 }
 
-window.scale = function scale(el, val) {
+function scale(el, val) {
     el.style.mozTransform =
     el.style.msTransform =
     el.style.webkitTransform =
@@ -92,8 +92,10 @@ function endRecord(){
             audio.setAttribute('controls', '');
             document.body.appendChild(audio);
             var audioURL = window.URL.createObjectURL(e.data);
+            console.log(audioURL);
             audio.src = audioURL;
             //audio.play();
+            var pffile = new Parse.File("myfile.zzz", e.data, "image/png");
 
             window.location = "sendlist.html";
         }

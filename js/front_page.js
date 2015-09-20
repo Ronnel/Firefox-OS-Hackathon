@@ -127,6 +127,14 @@ function startRecord(){
     }
 }
 
+function blobToDataURL(blob, callback) {
+    var a = new FileReader();
+    a.onload = function(e) {callback(e.target.result);}
+    a.readAsDataURL(blob);
+}
+
+var pffile;
+
 function endRecord(){
     window.clearInterval(timer);
     currentTime = 0;
@@ -136,17 +144,30 @@ function endRecord(){
 
         mediaRecorder.ondataavailable = function(e) {
             console.log("data available");
-            var audio = document.createElement('audio');
-            audio.style.display = "none";
-            audio.setAttribute('controls', '');
-            document.body.appendChild(audio);
             var audioURL = window.URL.createObjectURL(e.data);
-            console.log(audioURL);
-            audio.src = audioURL;
-            //audio.play();
-            var pffile = new Parse.File("myfile.zzz", e.data, "image/png");
+            blobToDataURL(e.data, function(data){
+                console.log(data);
+                pffile = new Parse.File("audio.ogg", { base64: data });
+                pffile.save().then(function() {
+                    console.log("Audio saved");
+                    var objs = Parse.Object.extend("TestObject");
+                    var audioObj = new objs();
+                    audioObj.set("audioFile", pffile);
+                    audioObj.set("from", Parse.User.current().id);
+                    audioObj.set("to", "7Pv68MTwiL");
+                    audioObj.set("unread", true);
+                    audioObj.save().then(function() {
+                      // The file has been saved to Parse.
+                      console.log("Save successful");
+                    }, function(error) {
+                      // The file either could not be read, or could not be saved to Parse.
+                    });
+                }, function(error) {
+                    // The file either could not be read, or could not be saved to Parse.
+                });
+            });
 
-            window.location = "sendlist.html";
+            //window.location = "sendlist.html";
         }
     }
 }

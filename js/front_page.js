@@ -11,6 +11,5 @@ var contact = function(id, name, dp){
 
 
 window.onload=function(){
-  
-  
+    getFriends("scroller");
 }

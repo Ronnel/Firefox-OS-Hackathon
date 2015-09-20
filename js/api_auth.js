@@ -23,7 +23,6 @@ function submit(){
 		Parse.User.logIn($("#form1_email").val(), $("#form1_password").val(), {
 			success: function(user) {
 						 //calliOSFunction("authenticated", [$("#form1_email").val(), $("#form1_password").val()]);
-						 getFriends();
 						 $("#auth_page").fadeOut();
 						 $.jStorage.set("email", $("#form1_email").val());
 						 $.jStorage.set("password", $("#form1_password").val());
@@ -146,7 +145,8 @@ function settings(){
 
 var friends;
 
-function getFriends(){
+function getFriends(div){
+				Parse.initialize("X4yCp0K91ZN0qD93vNENXrmmfeG8uvzmQjH7WIfT", "OsdEaOfeGHyYXUFPIpLYMgjwVgyTngYJawG3bcva");
 
         Parse.Cloud.run('getContacts', {
             id: Parse.User.current().id,
@@ -154,16 +154,16 @@ function getFriends(){
         }, {
             success: function(people){
                 friends = people.friends;
-                document.getElementById("scroller").innerHTML = '<div id="green"></div><div id="red"></div>';
+                document.getElementById(scroller).innerHTML = '<div id="green"></div><div id="red"></div>';
                 console.log(people);
                 var i = 0;
                 if(people.strangers.length){
-                    	$("#scroller").append("<div class='spacer'>UNREAD MESSAGES</div>");
-                        $("#scroller").append("<div id='strangers'></div>");
+                    	$("#"+div).append("<div class='spacer'>UNREAD MESSAGES</div>");
+                      $("#"+div).append("<div id='strangers'></div>");
                 }
 
-                $("#scroller").append("<div class='spacer'>CONTACTS</div>");
-		        $("#scroller").append("<div id='friends'></div>");
+                $("#"+div).append("<div class='spacer'>CONTACTS</div>");
+		        		$("#"+div).append("<div id='friends'></div>");
 
                 for(i=0; i<people.friends.length; ++i){
 			            var name = people.friends[i].name;
@@ -191,7 +191,7 @@ function getFriends(){
                                 time_string = "Last active at the beginning of time";
                         }
 
-	                    document.getElementById("friends").innerHTML += '<div class="third friend '+people.friends[i].id+'" id="'+people.friends[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>';
+	                    document.getElementById(div).innerHTML += '<div class="third friend '+people.friends[i].id+'" id="'+people.friends[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>';
                     }
 
                     for(i=0; i<people.strangers.length; ++i){
@@ -224,10 +224,8 @@ function getFriends(){
                                 time_string = "Last active at the beginning of time";
                         }
 
-	                    document.getElementById("strangers").innerHTML += '<div class="third friend '+people.strangers[i].id+'" id="'+people.strangers[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>'+unread+'</div>';
+	                    document.getElementById(div).innerHTML += '<div class="third friend '+people.strangers[i].id+'" id="'+people.strangers[i].id+'">'+img_string+'<div class="name">'+name+'</div><div class="lastActive">'+time_string+'</div>'+unread+'</div>';
                     }
-
-                    layout();
             },
             error: function(error){
                 console.log(error);

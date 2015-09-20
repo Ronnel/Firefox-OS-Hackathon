@@ -33,6 +33,16 @@ header{
     z-index: 1001;
 }
 
+#lgout{
+  width: 30px;
+  left: 60px;
+  height: 30px;
+  margin-top: 12px;
+  margin-left: 5px;
+  position: absolute;
+  z-index: 1001;
+}
+
 #bprofile{
     width: 35px;
     left: 5px;

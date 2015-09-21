@@ -34,6 +34,7 @@ window.onload=function(){
         audioObj.save().then(function() {
          // The file has been saved to Parse.
          console.log("Save successful");
+        window.location = "./frontPage.html";
             }, function(error) {
       // The file either could not be read, or could not be saved to Parse.
             });}

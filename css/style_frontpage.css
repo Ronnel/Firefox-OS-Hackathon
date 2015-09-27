@@ -9,9 +9,9 @@
 body{
     width: 100%;
     height: 100%;
-    background : #e8e8e8;
-     font-family: 'Open Sans';
-    color : #000;
+    background : #373058;
+    font-family: 'Open Sans';
+    color : #fff;
     margin: 0px;
 }
 
@@ -20,7 +20,7 @@ header{
    height: 50px;
    position: fixed;
    z-index: 1000;
-   background: #e8e8e8;
+   background: #373058;
 }
 
 #bsearch{
@@ -62,7 +62,7 @@ header{
 #wrapper{
   width: 100%;
   height: 100%;
-  background : #e8e8e8;
+  background : #373058;
   z-index:800;
   padding-top: 30px;
 }
@@ -79,19 +79,18 @@ header{
 }
 
 .contacts{
-    background-color: #f8f8f8;
+    background-color: #373058;
     position: relative;
     overflow: hidden;
-    width: 120px;
+    width: 70px;
     float: left;
-    height: 125px;
+    height: 130px;
     margin-right: 10px;
     margin-left: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     display: block;
-    border: 1px solid #e9e9e9;
-	box-shadow: 0 1px 4px 0px rgba(0,0,0,.08);
+    border: 0px solid #e9e9e9;
 }
 
 .profile_pic{
@@ -104,14 +103,12 @@ header{
     left: 50%;
     top: 15px;
     margin-left: -35px;
-
-
 }
 
 .name{
     font-family: 'Open Sans';
     white-space: nowrap;
-    color: black;
+    color: white;
     display: block;
     overflow: hidden;
     left :0px;
@@ -119,12 +116,19 @@ header{
     display: block;
     text-overflow: ellipsis;
     width: 100%;
-    padding: 0 20px;
     position: absolute;
     text-align: center;
     box-sizing: border-box;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+.status{
+  position: absolute;
+  text-align: center;
+  top: 120px;
+  width: 100%;
+  font-size: 10px;
 }
 
 #record-wrapper{

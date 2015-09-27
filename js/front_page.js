@@ -1,11 +1,12 @@
-var contact = function(id, name, dp){
+var contact = function(id, name, dp, status){
   this.id=id;
   this.name=name;
   this.dp=dp;
+  this.status=status;
   var div= document.createElement("div");
   div.setAttribute("class", "contacts");
   div.setAttribute("data-person", id);
-  div.innerHTML="<div class='profile_pic' style='background: url("+dp+"); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover;'></div><div class='name'>"+name+"</div><div class='addButton'></div>";
+  div.innerHTML="<div class='profile_pic' style='background: url("+dp+"); background-size: cover; -webkit-background-size: cover; -moz-background-size: cover;'></div><div class='name'>"+name+"</div><div class='status'>"+status+"</div><div class='addButton'></div>";
   this.div=div;
   return this;
 }
@@ -39,7 +40,7 @@ window.onload=function(){
 function layout(arr){
     // id, img, lastSeen, name_lowercase
     for(var i=0; i<arr.length; ++i){
-        var person = new contact(arr[i].id, arr[i].name, arr[i].img);
+        var person = new contact(arr[i].id, arr[i].name.split(" ")[0], arr[i].img, "offline");
         document.getElementById("scroller").appendChild(person.div);
         $(person.div).click(function(){ play(this); });
     }
